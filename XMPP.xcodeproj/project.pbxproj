@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		959C8C3D1D89E0D1009E231E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C8C3C1D89E0D1009E231E /* AppDelegate.swift */; };
+		959C8C3F1D89E0D1009E231E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C8C3E1D89E0D1009E231E /* ViewController.swift */; };
+		959C8C421D89E0D1009E231E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959C8C401D89E0D1009E231E /* Main.storyboard */; };
+		959C8C441D89E0D1009E231E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959C8C431D89E0D1009E231E /* Assets.xcassets */; };
+		959C8C471D89E0D1009E231E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959C8C451D89E0D1009E231E /* LaunchScreen.storyboard */; };
+		959C8C521D89E0D1009E231E /* XMPPTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C8C511D89E0D1009E231E /* XMPPTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		959C8C4E1D89E0D1009E231E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 959C8C311D89E0D1009E231E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 959C8C381D89E0D1009E231E;
+			remoteInfo = XMPP;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		959C8C391D89E0D1009E231E /* XMPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		959C8C3C1D89E0D1009E231E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		959C8C3E1D89E0D1009E231E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		959C8C411D89E0D1009E231E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		959C8C431D89E0D1009E231E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		959C8C461D89E0D1009E231E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		959C8C481D89E0D1009E231E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		959C8C4D1D89E0D1009E231E /* XMPPTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMPPTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		959C8C511D89E0D1009E231E /* XMPPTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMPPTests.swift; sourceTree = "<group>"; };
+		959C8C531D89E0D1009E231E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		959C8C361D89E0D1009E231E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959C8C4A1D89E0D1009E231E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		959C8C301D89E0D1009E231E = {
+			isa = PBXGroup;
+			children = (
+				959C8C3B1D89E0D1009E231E /* XMPP */,
+				959C8C501D89E0D1009E231E /* XMPPTests */,
+				959C8C3A1D89E0D1009E231E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		959C8C3A1D89E0D1009E231E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				959C8C391D89E0D1009E231E /* XMPP.app */,
+				959C8C4D1D89E0D1009E231E /* XMPPTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		959C8C3B1D89E0D1009E231E /* XMPP */ = {
+			isa = PBXGroup;
+			children = (
+				959C8C3C1D89E0D1009E231E /* AppDelegate.swift */,
+				959C8C3E1D89E0D1009E231E /* ViewController.swift */,
+				959C8C401D89E0D1009E231E /* Main.storyboard */,
+				959C8C431D89E0D1009E231E /* Assets.xcassets */,
+				959C8C451D89E0D1009E231E /* LaunchScreen.storyboard */,
+				959C8C481D89E0D1009E231E /* Info.plist */,
+			);
+			path = XMPP;
+			sourceTree = "<group>";
+		};
+		959C8C501D89E0D1009E231E /* XMPPTests */ = {
+			isa = PBXGroup;
+			children = (
+				959C8C511D89E0D1009E231E /* XMPPTests.swift */,
+				959C8C531D89E0D1009E231E /* Info.plist */,
+			);
+			path = XMPPTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		959C8C381D89E0D1009E231E /* XMPP */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 959C8C561D89E0D1009E231E /* Build configuration list for PBXNativeTarget "XMPP" */;
+			buildPhases = (
+				959C8C351D89E0D1009E231E /* Sources */,
+				959C8C361D89E0D1009E231E /* Frameworks */,
+				959C8C371D89E0D1009E231E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XMPP;
+			productName = XMPP;
+			productReference = 959C8C391D89E0D1009E231E /* XMPP.app */;
+			productType = "com.apple.product-type.application";
+		};
+		959C8C4C1D89E0D1009E231E /* XMPPTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 959C8C591D89E0D1009E231E /* Build configuration list for PBXNativeTarget "XMPPTests" */;
+			buildPhases = (
+				959C8C491D89E0D1009E231E /* Sources */,
+				959C8C4A1D89E0D1009E231E /* Frameworks */,
+				959C8C4B1D89E0D1009E231E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				959C8C4F1D89E0D1009E231E /* PBXTargetDependency */,
+			);
+			name = XMPPTests;
+			productName = XMPPTests;
+			productReference = 959C8C4D1D89E0D1009E231E /* XMPPTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		959C8C311D89E0D1009E231E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				TargetAttributes = {
+					959C8C381D89E0D1009E231E = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					959C8C4C1D89E0D1009E231E = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 959C8C381D89E0D1009E231E;
+					};
+				};
+			};
+			buildConfigurationList = 959C8C341D89E0D1009E231E /* Build configuration list for PBXProject "XMPP" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 959C8C301D89E0D1009E231E;
+			productRefGroup = 959C8C3A1D89E0D1009E231E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				959C8C381D89E0D1009E231E /* XMPP */,
+				959C8C4C1D89E0D1009E231E /* XMPPTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		959C8C371D89E0D1009E231E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959C8C471D89E0D1009E231E /* LaunchScreen.storyboard in Resources */,
+				959C8C441D89E0D1009E231E /* Assets.xcassets in Resources */,
+				959C8C421D89E0D1009E231E /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959C8C4B1D89E0D1009E231E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		959C8C351D89E0D1009E231E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959C8C3F1D89E0D1009E231E /* ViewController.swift in Sources */,
+				959C8C3D1D89E0D1009E231E /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		959C8C491D89E0D1009E231E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				959C8C521D89E0D1009E231E /* XMPPTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		959C8C4F1D89E0D1009E231E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 959C8C381D89E0D1009E231E /* XMPP */;
+			targetProxy = 959C8C4E1D89E0D1009E231E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		959C8C401D89E0D1009E231E /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				959C8C411D89E0D1009E231E /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		959C8C451D89E0D1009E231E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				959C8C461D89E0D1009E231E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		959C8C541D89E0D1009E231E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		959C8C551D89E0D1009E231E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		959C8C571D89E0D1009E231E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = XMPP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.XMPP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		959C8C581D89E0D1009E231E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = XMPP/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.XMPP;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		959C8C5A1D89E0D1009E231E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = XMPPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.XMPPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XMPP.app/XMPP";
+			};
+			name = Debug;
+		};
+		959C8C5B1D89E0D1009E231E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = XMPPTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.example.XMPPTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XMPP.app/XMPP";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		959C8C341D89E0D1009E231E /* Build configuration list for PBXProject "XMPP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959C8C541D89E0D1009E231E /* Debug */,
+				959C8C551D89E0D1009E231E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		959C8C561D89E0D1009E231E /* Build configuration list for PBXNativeTarget "XMPP" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959C8C571D89E0D1009E231E /* Debug */,
+				959C8C581D89E0D1009E231E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		959C8C591D89E0D1009E231E /* Build configuration list for PBXNativeTarget "XMPPTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				959C8C5A1D89E0D1009E231E /* Debug */,
+				959C8C5B1D89E0D1009E231E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 959C8C311D89E0D1009E231E /* Project object */;
+}
