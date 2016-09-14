@@ -1,0 +1,151 @@
+import UIKit
+import xmpp_messenger_ios
+import JSQMessagesViewController
+import XMPPFramework
+
+class OpenChatsTableViewController: UITableViewController, OneRosterDelegate {
+	
+	var chatList = NSArray()
+
+	// Mark: Life Cycle
+	
+	override func viewWillAppear(animated: Bool) {
+		super.viewWillAppear(animated)
+		
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(OpenChatsTableViewController.logout), name: kNeedToTimeOutString, object: nil)
+
+
+        OneRoster.sharedInstance.delegate = self
+		
+		tableView.rowHeight = 50
+	}
+	
+	override func viewWillDisappear(animated: Bool)
+    {
+		super.viewWillDisappear(animated)
+		
+		OneRoster.sharedInstance.delegate = nil
+	}
+    func logout()
+    {
+        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.isUserLoggedIn = false
+        OneChat.sharedInstance.disconnect()
+        self.navigationController?.popViewControllerAnimated(true)
+    }
+    
+    //Mark:Action methods
+    @IBAction func onSelectLogout(sender: AnyObject)
+    {
+        
+        logout()
+    }
+    
+    @IBAction func onSelectSettings(sender: AnyObject)
+    {
+        
+    }
+    
+	// Mark: OneRoster Delegates
+	func oneRosterContentChanged(controller: NSFetchedResultsController)
+    {
+		//Will reload the tableView to reflet roster's changes
+		tableView.reloadData()
+	}
+	
+    
+    // Mark: UITableView Datasources
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        let sections: NSArray? =  OneRoster.buddyList.sections
+        
+        if section < sections!.count {
+            let sectionInfo: AnyObject = sections![section]
+            
+            return sectionInfo.numberOfObjects
+        }
+        
+        return 0;
+    }
+    
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int
+    {
+        return OneRoster.buddyList.sections!.count
+    }
+    
+    // Mark: UITableView Delegates
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
+    {
+        let sections: NSArray? = OneRoster.sharedInstance.fetchedResultsController()!.sections
+        
+        if section < sections!.count {
+            let sectionInfo: AnyObject = sections![section]
+            let tmpSection: Int = Int(sectionInfo.name)!
+            
+            switch (tmpSection) {
+            case 0 :
+                return kAvailable
+                
+            case 1 :
+                return kAwayString
+                
+            default :
+                return kOfflineString
+                
+            }
+        }
+        
+        return ""
+    }
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        _ = OneRoster.userFromRosterAtIndexPath(indexPath: indexPath)
+        
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(kCellId, forIndexPath: indexPath)
+        let user = OneRoster.userFromRosterAtIndexPath(indexPath: indexPath)
+        
+        cell!.textLabel!.text = user.displayName;
+        cell!.detailTextLabel?.hidden = true
+        
+        if user.unreadMessages.intValue > 0 {
+            cell!.backgroundColor = .orangeColor()
+        } else {
+            cell!.backgroundColor = .whiteColor()
+        }
+        
+        OneChat.sharedInstance.configurePhotoForCell(cell!, user: user)
+        
+        return cell!;
+    }
+    
+
+	
+	// Mark: Segue support
+	
+	override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+		if segue?.identifier == kOpenChatToChatSegue {
+			if let controller = segue?.destinationViewController as? ChatViewController {
+                
+                if let cell: UITableViewCell? = sender as? UITableViewCell {
+                    let user = OneRoster.userFromRosterAtIndexPath(indexPath: tableView.indexPathForCell(cell!)!)
+                    controller.recipient = user
+                }
+			}
+		}
+	}
+	
+	// Mark: Memory Management
+	
+	override func didReceiveMemoryWarning() {
+		
+		super.didReceiveMemoryWarning()
+		// Dispose of any resources that can be recreated.
+	}
+}
