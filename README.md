@@ -1,21 +1,34 @@
-# ExampleXMPPiOS
+# XMPP iOS Example
 
-## Install CocoaPods
+## Dependency Installation (CocoaPods)
 
-Before you can successfully build the project, you must first install all of the project dependencies. This is done using the CocoaPods dependency manager.
+Before you can build the XCode project, you must first properly install the CocoaPod dependencies to the project.  To install these dependencies, navigate to the base directory of the project and run the following commands:
 
-Install CocoaPods to your machine.
+```sh
+$ pod install
+$ pod update
+```
 
-    $ sudo gem install cocoapods
-## Project Build
+If you do not have CocoaPods currently on you machine, run the following command to install it:
 
-First, clone the project into a local repo.
+```sh
+$ sudo gem install cocoapods
+```
 
-    $ git clone https://github.com/riis/ExampleXMPPiOS.git
-Then, run the following commands from the base project directory:
+Once the all of the dependencies are installed and updated, you can now open the project in XCode.  After launching XCode, open the project using the **.xcworkspace** file.
 
-    $ pod install
-    $ open XMPP.scworkspace
-Once the project opens in xcode, you can build the project.
+## Fix Before Build
 
-If you encounter compilation errors after the installation, please consult https://github.com/processone/xmpp-messenger-ios Installation Section
+There is an error in one of the methods inside one of the Pod libraries that needs to fixed before the project will compile correctly.  Inside of the **xmpp-messanger-ios** directory, locate the **OneChat.swift** file and change the following lines of code in the **setupStream()** method:
+
+```sh
+xmppvCardTempModule = XMPPvCardTempModule(withvCardStorage: xmppvCardStorage)
+xmppvCardAvatarModule = XMPPvCardAvatarModule(withvCardTempModule: xmppvCardTempModule)
+```
+to:
+```sh
+xmppvCardTempModule = XMPPvCardTempModule(vCardStorage: xmppvCardStorage)
+xmppvCardAvatarModule = XMPPvCardAvatarModule(vCardTempModule: xmppvCardTempModule)
+```
+
+Now you can compile the project and launch the app on the device of your choosing.
