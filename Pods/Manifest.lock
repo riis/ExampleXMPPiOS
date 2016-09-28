@@ -187,7 +187,6 @@ DEPENDENCIES:
   - CocoaLumberjack
   - FMDB
   - JSQMessagesViewController
-  - JSQSystemSoundPlayer
   - KissXML
   - TrustKit
   - XMPPFramework (from `https://github.com/robbiehanson/XMPPFramework.git`, branch `master`)
@@ -212,6 +211,6 @@ SPEC CHECKSUMS:
   TrustKit: 129d2df010dd161a59f5a6280b88c1ac9f8909bb
   XMPPFramework: 977eef5d00c20fe9fb19c30d84a89c2d5564252d
 
-PODFILE CHECKSUM: b60e525b0403ddae487359f37777ca1b20097991
+PODFILE CHECKSUM: c7ba8fdedc047ba926db17fec522aefab7377e75
 
 COCOAPODS: 1.1.0.rc.2

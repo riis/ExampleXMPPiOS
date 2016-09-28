@@ -7,7 +7,6 @@ target 'XMPP' do
     pod 'CocoaLumberjack'
     pod 'FMDB'
     pod 'JSQMessagesViewController'
-    pod 'JSQSystemSoundPlayer'
     pod 'KissXML'
     pod 'XMPPFramework', :git => "https://github.com/robbiehanson/XMPPFramework.git", :branch => 'master'
     pod 'TrustKit'
