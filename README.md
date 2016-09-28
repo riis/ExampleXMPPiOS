@@ -17,6 +17,6 @@ $ sudo gem install cocoapods
 
 Once the all of the dependencies are installed and updated, you can now open the project in XCode.  After launching XCode, open the project using the **.xcworkspace** file.
 
-## Do a Clean Build
+Do a Clean Build
 
 Now you can compile the project and launch the app on the device of your choosing.
