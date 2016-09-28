@@ -1,6 +1,5 @@
 import UIKit
 import XMPPFramework
-import xmpp_messenger_ios
 
 protocol ContactPickerDelegate{
 	func didSelectContact(_ recipient: XMPPUserCoreDataStorageObject)

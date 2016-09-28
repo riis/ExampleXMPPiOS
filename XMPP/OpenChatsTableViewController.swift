@@ -1,5 +1,4 @@
 import UIKit
-import xmpp_messenger_ios
 import JSQMessagesViewController
 import XMPPFramework
 

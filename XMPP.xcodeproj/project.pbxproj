@@ -22,6 +22,14 @@
 		959C8C6A1D89E146009E231E /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C8C681D89E146009E231E /* LoginTests.swift */; };
 		959C8C6B1D89E146009E231E /* ChatViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C8C691D89E146009E231E /* ChatViewControllerTest.swift */; };
 		9CDE491E20543A8416B328B3 /* Pods_XMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBA68C291EF603B1EF56B56 /* Pods_XMPP.framework */; };
+		D566CFFB1D9C312600F34FC6 /* OneMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566CFF31D9C312600F34FC6 /* OneMessage.swift */; };
+		D566CFFC1D9C312600F34FC6 /* kXMPP.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566CFF41D9C312600F34FC6 /* kXMPP.swift */; };
+		D566CFFD1D9C312600F34FC6 /* OneChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566CFF51D9C312600F34FC6 /* OneChat.swift */; };
+		D566CFFE1D9C312600F34FC6 /* OneChats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566CFF61D9C312600F34FC6 /* OneChats.swift */; };
+		D566CFFF1D9C312600F34FC6 /* OneLastActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566CFF71D9C312600F34FC6 /* OneLastActivity.swift */; };
+		D566D0001D9C312600F34FC6 /* OnePresence.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566CFF81D9C312600F34FC6 /* OnePresence.swift */; };
+		D566D0011D9C312600F34FC6 /* OneRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566CFF91D9C312600F34FC6 /* OneRoom.swift */; };
+		D566D0021D9C312600F34FC6 /* OneRoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = D566CFFA1D9C312600F34FC6 /* OneRoster.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +64,14 @@
 		959C8C691D89E146009E231E /* ChatViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewControllerTest.swift; sourceTree = "<group>"; };
 		959C8C6C1D89E3CA009E231E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = XMPP/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		A98DFA75035C3A3DB40618F1 /* Pods-XMPPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPTests/Pods-XMPPTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D566CFF31D9C312600F34FC6 /* OneMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneMessage.swift; sourceTree = "<group>"; };
+		D566CFF41D9C312600F34FC6 /* kXMPP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = kXMPP.swift; sourceTree = "<group>"; };
+		D566CFF51D9C312600F34FC6 /* OneChat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneChat.swift; sourceTree = "<group>"; };
+		D566CFF61D9C312600F34FC6 /* OneChats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneChats.swift; sourceTree = "<group>"; };
+		D566CFF71D9C312600F34FC6 /* OneLastActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneLastActivity.swift; sourceTree = "<group>"; };
+		D566CFF81D9C312600F34FC6 /* OnePresence.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnePresence.swift; sourceTree = "<group>"; };
+		D566CFF91D9C312600F34FC6 /* OneRoom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneRoom.swift; sourceTree = "<group>"; };
+		D566CFFA1D9C312600F34FC6 /* OneRoster.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneRoster.swift; sourceTree = "<group>"; };
 		DEA6458E9F97BC30A7F062BC /* Pods_XMPPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMPPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFBA68C291EF603B1EF56B56 /* Pods_XMPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -114,6 +130,7 @@
 		959C8C3B1D89E0D1009E231E /* XMPP */ = {
 			isa = PBXGroup;
 			children = (
+				D566D0031D9C326400F34FC6 /* XmppConnector */,
 				959C8C3C1D89E0D1009E231E /* AppDelegate.swift */,
 				959C8C5C1D89E129009E231E /* LoginViewController.swift */,
 				959C8C5D1D89E129009E231E /* OpenChatsTableViewController.swift */,
@@ -147,6 +164,21 @@
 				DEA6458E9F97BC30A7F062BC /* Pods_XMPPTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D566D0031D9C326400F34FC6 /* XmppConnector */ = {
+			isa = PBXGroup;
+			children = (
+				D566CFF41D9C312600F34FC6 /* kXMPP.swift */,
+				D566CFF51D9C312600F34FC6 /* OneChat.swift */,
+				D566CFF61D9C312600F34FC6 /* OneChats.swift */,
+				D566CFF71D9C312600F34FC6 /* OneLastActivity.swift */,
+				D566CFF81D9C312600F34FC6 /* OnePresence.swift */,
+				D566CFF91D9C312600F34FC6 /* OneRoom.swift */,
+				D566CFFA1D9C312600F34FC6 /* OneRoster.swift */,
+				D566CFF31D9C312600F34FC6 /* OneMessage.swift */,
+			);
+			name = XmppConnector;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,11 +384,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				959C8C621D89E129009E231E /* OpenChatsTableViewController.swift in Sources */,
+				D566D0001D9C312600F34FC6 /* OnePresence.swift in Sources */,
 				959C8C611D89E129009E231E /* LoginViewController.swift in Sources */,
+				D566CFFB1D9C312600F34FC6 /* OneMessage.swift in Sources */,
+				D566CFFF1D9C312600F34FC6 /* OneLastActivity.swift in Sources */,
 				959C8C631D89E129009E231E /* ChatViewController.swift in Sources */,
+				D566CFFE1D9C312600F34FC6 /* OneChats.swift in Sources */,
+				D566CFFD1D9C312600F34FC6 /* OneChat.swift in Sources */,
 				959C8C641D89E129009E231E /* ContactListTableViewController.swift in Sources */,
+				D566D0011D9C312600F34FC6 /* OneRoom.swift in Sources */,
 				959C8C671D89E133009E231E /* Constants.swift in Sources */,
+				D566D0021D9C312600F34FC6 /* OneRoster.swift in Sources */,
 				959C8C3D1D89E0D1009E231E /* AppDelegate.swift in Sources */,
+				D566CFFC1D9C312600F34FC6 /* kXMPP.swift in Sources */,
 				959C8C651D89E129009E231E /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

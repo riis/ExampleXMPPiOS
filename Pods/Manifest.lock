@@ -2,15 +2,17 @@ PODS:
   - CocoaAsyncSocket (7.5.0):
     - CocoaAsyncSocket/GCD (= 7.5.0)
   - CocoaAsyncSocket/GCD (7.5.0)
-  - CocoaLumberjack (2.0.0):
-    - CocoaLumberjack/Default (= 2.0.0)
-    - CocoaLumberjack/Extensions (= 2.0.0)
-  - CocoaLumberjack/Core (2.0.0)
-  - CocoaLumberjack/Default (2.0.0):
+  - CocoaLumberjack (2.4.0):
+    - CocoaLumberjack/Default (= 2.4.0)
+    - CocoaLumberjack/Extensions (= 2.4.0)
+  - CocoaLumberjack/Core (2.4.0)
+  - CocoaLumberjack/Default (2.4.0):
     - CocoaLumberjack/Core
-  - CocoaLumberjack/Extensions (2.0.0):
+  - CocoaLumberjack/Extensions (2.4.0):
     - CocoaLumberjack/Default
-  - FMDB (1.5.1)
+  - FMDB (2.6.2):
+    - FMDB/standard (= 2.6.2)
+  - FMDB/standard (2.6.2)
   - JSQMessagesViewController (7.3.4):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
@@ -18,11 +20,6 @@ PODS:
     - KissXML/Core (= 5.1.2)
   - KissXML/Core (5.1.2)
   - TrustKit (1.4.0)
-  - xmpp-messenger-ios (1.0.1):
-    - FMDB (~> 1.0)
-    - JSQMessagesViewController
-    - JSQSystemSoundPlayer (~> 2.0)
-    - XMPPFramework
   - XMPPFramework (3.7.0):
     - XMPPFramework/All (= 3.7.0)
   - XMPPFramework/All (3.7.0):
@@ -186,8 +183,13 @@ PODS:
     - XMPPFramework/XEP-0203
 
 DEPENDENCIES:
+  - CocoaAsyncSocket
+  - CocoaLumberjack
+  - FMDB
+  - JSQMessagesViewController
+  - JSQSystemSoundPlayer
+  - KissXML
   - TrustKit
-  - xmpp-messenger-ios
   - XMPPFramework (from `https://github.com/robbiehanson/XMPPFramework.git`, branch `master`)
 
 EXTERNAL SOURCES:
@@ -202,15 +204,14 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 3baeb1ddd969f81cf9fca81053ae49ef2d1cbbfa
-  CocoaLumberjack: a6f77d987d65dc7ba86b0f84db7d0b9084f77bcb
-  FMDB: 0c3eed7342fdf9dc03b8fe3d8de8e7a9f08bfacc
+  CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   JSQMessagesViewController: 39fed975e3c9f8eba7292071e29eeb541d105e66
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   KissXML: 246c842586bb77110e04fb88e19376d96245c856
   TrustKit: 129d2df010dd161a59f5a6280b88c1ac9f8909bb
-  xmpp-messenger-ios: e1a81270a0d62f1307c86b493209f01853e82e6b
   XMPPFramework: 977eef5d00c20fe9fb19c30d84a89c2d5564252d
 
-PODFILE CHECKSUM: 33b055a116d11746e068f7e1aa5235b94385b683
+PODFILE CHECKSUM: b60e525b0403ddae487359f37777ca1b20097991
 
 COCOAPODS: 1.1.0.rc.2

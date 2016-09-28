@@ -1,15 +1,19 @@
 # Uncomment this line to define a global platform for your project
- platform :ios, '8.0'
+platform :ios, '8.0'
 use_frameworks!
 
-target ‘XMPP’ do
-pod 'xmpp-messenger-ios'
-pod 'XMPPFramework', :git => "https://github.com/robbiehanson/XMPPFramework.git", :branch => 'master'
-pod 'TrustKit'
+target 'XMPP' do
+    pod 'CocoaAsyncSocket'
+    pod 'CocoaLumberjack'
+    pod 'FMDB'
+    pod 'JSQMessagesViewController'
+    pod 'JSQSystemSoundPlayer'
+    pod 'KissXML'
+    pod 'XMPPFramework', :git => "https://github.com/robbiehanson/XMPPFramework.git", :branch => 'master'
+    pod 'TrustKit'
 end
 
-target ‘XMPPTests' do
-pod 'xmpp-messenger-ios'
-pod 'TrustKit'
+target 'XMPPTests' do
+    pod 'TrustKit'
 end
 

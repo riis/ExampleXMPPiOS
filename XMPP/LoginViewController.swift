@@ -1,7 +1,5 @@
 import UIKit
 import XMPPFramework
-import xmpp_messenger_ios
-
 class LoginViewController: UIViewController {
 
     @IBOutlet var usernameTextField: UITextField!
