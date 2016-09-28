@@ -11,7 +11,7 @@ class LoginTests: XCTestCase {
     override func setUp(){
         super.setUp()
         
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle(forClass: self.dynamicType))
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle(for: type(of: self)))
         let navigationController = storyboard.instantiateInitialViewController() as! UINavigationController
         vc = navigationController.topViewController as! LoginViewController
         vc.viewDidLoad()

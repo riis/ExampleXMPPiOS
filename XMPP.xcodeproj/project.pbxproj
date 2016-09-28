@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		448BBCB51D8AE4B8009AF3DF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959C8C6C1D89E3CA009E231E /* Main.storyboard */; };
-		94C00D11B89DCC02F6F60DAC /* Pods_XMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A4249BFF03BB2D5C3E361F39 /* Pods_XMPP.framework */; };
+		666726CAA2D7747F9E136D17 /* Pods_XMPPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA6458E9F97BC30A7F062BC /* Pods_XMPPTests.framework */; };
 		959C8C3D1D89E0D1009E231E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C8C3C1D89E0D1009E231E /* AppDelegate.swift */; };
 		959C8C441D89E0D1009E231E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959C8C431D89E0D1009E231E /* Assets.xcassets */; };
 		959C8C471D89E0D1009E231E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 959C8C451D89E0D1009E231E /* LaunchScreen.storyboard */; };
@@ -21,7 +21,7 @@
 		959C8C671D89E133009E231E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C8C661D89E133009E231E /* Constants.swift */; };
 		959C8C6A1D89E146009E231E /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C8C681D89E146009E231E /* LoginTests.swift */; };
 		959C8C6B1D89E146009E231E /* ChatViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959C8C691D89E146009E231E /* ChatViewControllerTest.swift */; };
-		FA0A2EF54566BF008076701C /* Pods_XMPPTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D82240C243E2F8849BF2CF4 /* Pods_XMPPTests.framework */; };
+		9CDE491E20543A8416B328B3 /* Pods_XMPP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFBA68C291EF603B1EF56B56 /* Pods_XMPP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		2D82240C243E2F8849BF2CF4 /* Pods_XMPPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMPPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		90506231FE8C8D910407EDE5 /* Pods-XMPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-XMPP/Pods-XMPP.release.xcconfig"; sourceTree = "<group>"; };
+		0FEBCF3B5BB185AE33328C93 /* Pods-XMPP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPP.release.xcconfig"; path = "Pods/Target Support Files/Pods-XMPP/Pods-XMPP.release.xcconfig"; sourceTree = "<group>"; };
+		2919B794DF6DAFF7029636F4 /* Pods-XMPPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPTests/Pods-XMPPTests.release.xcconfig"; sourceTree = "<group>"; };
+		6AF1149706F8AE669ECB17A1 /* Pods-XMPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XMPP/Pods-XMPP.debug.xcconfig"; sourceTree = "<group>"; };
 		959C8C391D89E0D1009E231E /* XMPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		959C8C3C1D89E0D1009E231E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		959C8C431D89E0D1009E231E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,10 +55,9 @@
 		959C8C681D89E146009E231E /* LoginTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		959C8C691D89E146009E231E /* ChatViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewControllerTest.swift; sourceTree = "<group>"; };
 		959C8C6C1D89E3CA009E231E /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = XMPP/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		9770B4FB818CBE8EF5244615 /* Pods-XMPPTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPTests/Pods-XMPPTests.release.xcconfig"; sourceTree = "<group>"; };
-		9D4D1E4ACEA2B1CEF9A73449 /* Pods-XMPPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPTests/Pods-XMPPTests.debug.xcconfig"; sourceTree = "<group>"; };
-		A4249BFF03BB2D5C3E361F39 /* Pods_XMPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A79BF8F2DE21ED0C68073B4E /* Pods-XMPP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XMPP/Pods-XMPP.debug.xcconfig"; sourceTree = "<group>"; };
+		A98DFA75035C3A3DB40618F1 /* Pods-XMPPTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMPPTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-XMPPTests/Pods-XMPPTests.debug.xcconfig"; sourceTree = "<group>"; };
+		DEA6458E9F97BC30A7F062BC /* Pods_XMPPTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMPPTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFBA68C291EF603B1EF56B56 /* Pods_XMPP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMPP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94C00D11B89DCC02F6F60DAC /* Pods_XMPP.framework in Frameworks */,
+				9CDE491E20543A8416B328B3 /* Pods_XMPP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,20 +73,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA0A2EF54566BF008076701C /* Pods_XMPPTests.framework in Frameworks */,
+				666726CAA2D7747F9E136D17 /* Pods_XMPPTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		44F7B0D3F702FDA1E8B8693C /* Frameworks */ = {
+		129717FD8F7C4841491D21A3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A4249BFF03BB2D5C3E361F39 /* Pods_XMPP.framework */,
-				2D82240C243E2F8849BF2CF4 /* Pods_XMPPTests.framework */,
+				6AF1149706F8AE669ECB17A1 /* Pods-XMPP.debug.xcconfig */,
+				0FEBCF3B5BB185AE33328C93 /* Pods-XMPP.release.xcconfig */,
+				A98DFA75035C3A3DB40618F1 /* Pods-XMPPTests.debug.xcconfig */,
+				2919B794DF6DAFF7029636F4 /* Pods-XMPPTests.release.xcconfig */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		959C8C301D89E0D1009E231E = {
@@ -95,8 +97,8 @@
 				959C8C3B1D89E0D1009E231E /* XMPP */,
 				959C8C501D89E0D1009E231E /* XMPPTests */,
 				959C8C3A1D89E0D1009E231E /* Products */,
-				9D310953A885DB5CF94AC508 /* Pods */,
-				44F7B0D3F702FDA1E8B8693C /* Frameworks */,
+				129717FD8F7C4841491D21A3 /* Pods */,
+				CA9696E594C4FD56724DCE4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,15 +140,13 @@
 			path = XMPPTests;
 			sourceTree = "<group>";
 		};
-		9D310953A885DB5CF94AC508 /* Pods */ = {
+		CA9696E594C4FD56724DCE4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A79BF8F2DE21ED0C68073B4E /* Pods-XMPP.debug.xcconfig */,
-				90506231FE8C8D910407EDE5 /* Pods-XMPP.release.xcconfig */,
-				9D4D1E4ACEA2B1CEF9A73449 /* Pods-XMPPTests.debug.xcconfig */,
-				9770B4FB818CBE8EF5244615 /* Pods-XMPPTests.release.xcconfig */,
+				FFBA68C291EF603B1EF56B56 /* Pods_XMPP.framework */,
+				DEA6458E9F97BC30A7F062BC /* Pods_XMPPTests.framework */,
 			);
-			name = Pods;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,12 +156,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 959C8C561D89E0D1009E231E /* Build configuration list for PBXNativeTarget "XMPP" */;
 			buildPhases = (
-				C3796CBD394E73F916E5FF3F /* [CP] Check Pods Manifest.lock */,
+				8224E88A94924D0D563CBDEE /* [CP] Check Pods Manifest.lock */,
 				959C8C351D89E0D1009E231E /* Sources */,
 				959C8C361D89E0D1009E231E /* Frameworks */,
 				959C8C371D89E0D1009E231E /* Resources */,
-				C1D93753BFB6044F3CCD7AC6 /* [CP] Embed Pods Frameworks */,
-				2F0F38037766408773E812A7 /* [CP] Copy Pods Resources */,
+				25F8C203EB910DFF5271C337 /* [CP] Embed Pods Frameworks */,
+				D97B335E424F20B7C6D5354C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -176,12 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 959C8C591D89E0D1009E231E /* Build configuration list for PBXNativeTarget "XMPPTests" */;
 			buildPhases = (
-				8F5A8A383B52E62F0927CA97 /* [CP] Check Pods Manifest.lock */,
+				71B6828026190680FE353A89 /* [CP] Check Pods Manifest.lock */,
 				959C8C491D89E0D1009E231E /* Sources */,
 				959C8C4A1D89E0D1009E231E /* Frameworks */,
 				959C8C4B1D89E0D1009E231E /* Resources */,
-				30F37DDD34809FC3BC4C7ADB /* [CP] Embed Pods Frameworks */,
-				A6CD18B2CABF4C9B5350D105 /* [CP] Copy Pods Resources */,
+				1EFDF7300C4ED92587134733 /* [CP] Embed Pods Frameworks */,
+				2D9330BB22FD9840CD4C2F39 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -200,13 +200,16 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				TargetAttributes = {
 					959C8C381D89E0D1009E231E = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = DYG5XF554D;
+						LastSwiftMigration = 0800;
 					};
 					959C8C4C1D89E0D1009E231E = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 						TestTargetID = 959C8C381D89E0D1009E231E;
 					};
 				};
@@ -251,22 +254,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		2F0F38037766408773E812A7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMPP/Pods-XMPP-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		30F37DDD34809FC3BC4C7ADB /* [CP] Embed Pods Frameworks */ = {
+		1EFDF7300C4ED92587134733 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,37 +269,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMPPTests/Pods-XMPPTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8F5A8A383B52E62F0927CA97 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		A6CD18B2CABF4C9B5350D105 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMPPTests/Pods-XMPPTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C1D93753BFB6044F3CCD7AC6 /* [CP] Embed Pods Frameworks */ = {
+		25F8C203EB910DFF5271C337 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -326,7 +284,22 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMPP/Pods-XMPP-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C3796CBD394E73F916E5FF3F /* [CP] Check Pods Manifest.lock */ = {
+		2D9330BB22FD9840CD4C2F39 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMPPTests/Pods-XMPPTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71B6828026190680FE353A89 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -338,7 +311,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8224E88A94924D0D563CBDEE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		D97B335E424F20B7C6D5354C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-XMPP/Pods-XMPP-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -404,8 +407,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -449,8 +454,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -469,56 +476,67 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		959C8C571D89E0D1009E231E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A79BF8F2DE21ED0C68073B4E /* Pods-XMPP.debug.xcconfig */;
+			baseConfigurationReference = 6AF1149706F8AE669ECB17A1 /* Pods-XMPP.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DYG5XF554D;
 				INFOPLIST_FILE = XMPP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.XMPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		959C8C581D89E0D1009E231E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 90506231FE8C8D910407EDE5 /* Pods-XMPP.release.xcconfig */;
+			baseConfigurationReference = 0FEBCF3B5BB185AE33328C93 /* Pods-XMPP.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = DYG5XF554D;
 				INFOPLIST_FILE = XMPP/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.XMPP;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		959C8C5A1D89E0D1009E231E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D4D1E4ACEA2B1CEF9A73449 /* Pods-XMPPTests.debug.xcconfig */;
+			baseConfigurationReference = A98DFA75035C3A3DB40618F1 /* Pods-XMPPTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = XMPPTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.XMPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XMPP.app/XMPP";
 			};
 			name = Debug;
 		};
 		959C8C5B1D89E0D1009E231E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9770B4FB818CBE8EF5244615 /* Pods-XMPPTests.release.xcconfig */;
+			baseConfigurationReference = 2919B794DF6DAFF7029636F4 /* Pods-XMPPTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = XMPPTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.XMPPTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/XMPP.app/XMPP";
 			};
 			name = Release;

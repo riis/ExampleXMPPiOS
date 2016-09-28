@@ -3,7 +3,7 @@ import XMPPFramework
 import xmpp_messenger_ios
 
 protocol ContactPickerDelegate{
-	func didSelectContact(recipient: XMPPUserCoreDataStorageObject)
+	func didSelectContact(_ recipient: XMPPUserCoreDataStorageObject)
 }
 
 class ContactListTableViewController: UITableViewController, OneRosterDelegate {
@@ -18,7 +18,7 @@ class ContactListTableViewController: UITableViewController, OneRosterDelegate {
 		OneRoster.sharedInstance.delegate = self
 	}
 	
-	override func viewWillAppear(animated: Bool) {
+	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		if OneChat.sharedInstance.isConnected() {
@@ -26,22 +26,22 @@ class ContactListTableViewController: UITableViewController, OneRosterDelegate {
 		}
 	}
 	
-	override func viewWillDisappear(animated: Bool) {
+	override func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
 		OneRoster.sharedInstance.delegate = nil
 	}
 	
-	func oneRosterContentChanged(controller: NSFetchedResultsController) {
+	func oneRosterContentChanged(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
 		tableView.reloadData()
 	}
 	
 	// Mark: UITableView Datasources
 	
-	override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		let sections: NSArray? =  OneRoster.buddyList.sections
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		let sections: NSArray? =  OneRoster.buddyList.sections as NSArray?
 		
 		if section < sections!.count {
-			let sectionInfo: AnyObject = sections![section]
+			let sectionInfo: AnyObject = sections![section] as AnyObject
 			
 			return sectionInfo.numberOfObjects
 		}
@@ -49,17 +49,17 @@ class ContactListTableViewController: UITableViewController, OneRosterDelegate {
 		return 0;
 	}
 	
-	override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+	override func numberOfSections(in tableView: UITableView) -> Int {
 		return OneRoster.buddyList.sections!.count
 	}
 	
 	// Mark: UITableView Delegates
 	
-	override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		let sections: NSArray? = OneRoster.sharedInstance.fetchedResultsController()!.sections
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		let sections: NSArray? = OneRoster.sharedInstance.fetchedResultsController()!.sections as NSArray?
 		
 		if section < sections!.count {
-			let sectionInfo: AnyObject = sections![section]
+			let sectionInfo: AnyObject = sections![section] as AnyObject
 			let tmpSection: Int = Int(sectionInfo.name)!
 			
 			switch (tmpSection) {
@@ -78,24 +78,24 @@ class ContactListTableViewController: UITableViewController, OneRosterDelegate {
 		return ""
 	}
 	
-	override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		_ = OneRoster.userFromRosterAtIndexPath(indexPath: indexPath)
 		
 		delegate?.didSelectContact(OneRoster.userFromRosterAtIndexPath(indexPath: indexPath))
 		close(self)
 	}
 	
-	override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-		let cell: UITableViewCell? = tableView.dequeueReusableCellWithIdentifier(kCellId, forIndexPath: indexPath)
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: kCellId, for: indexPath)
 		let user = OneRoster.userFromRosterAtIndexPath(indexPath: indexPath)
 		
 		cell!.textLabel!.text = user.displayName;
-		cell!.detailTextLabel?.hidden = true
+		cell!.detailTextLabel?.isHidden = true
 		
 		if user.unreadMessages.intValue > 0 {
-			cell!.backgroundColor = .orangeColor()
+			cell!.backgroundColor = UIColor.orange
 		} else {
-			cell!.backgroundColor = .whiteColor()
+			cell!.backgroundColor = UIColor.white
 		}
 		
 		OneChat.sharedInstance.configurePhotoForCell(cell!, user: user)
@@ -105,12 +105,12 @@ class ContactListTableViewController: UITableViewController, OneRosterDelegate {
 	
 	// Mark: Segue support
 	
-	override func prepareForSegue(segue: UIStoryboardSegue?, sender: AnyObject?) {
+	override func prepare(for segue: UIStoryboardSegue?, sender: Any?) {
 		if segue?.identifier != kOpenSettingsSegue {
-			if let controller: ChatViewController? = segue?.destinationViewController as? ChatViewController {
-				if let cell: UITableViewCell? = sender as? UITableViewCell {
-					let user = OneRoster.userFromRosterAtIndexPath(indexPath: tableView.indexPathForCell(cell!)!)
-					controller!.recipient = user
+			if let controller: ChatViewController = segue?.destination as? ChatViewController {
+				if let cell = sender as? UITableViewCell {
+					let user = OneRoster.userFromRosterAtIndexPath(indexPath: tableView.indexPath(for: cell)!)
+					controller.recipient = user
 				}
 			}
 		}
@@ -118,8 +118,8 @@ class ContactListTableViewController: UITableViewController, OneRosterDelegate {
 	
 	// Mark: IBAction
 	
-	@IBAction func close(sender: AnyObject) {
-		self.dismissViewControllerAnimated(true, completion: nil)
+	@IBAction func close(_ sender: AnyObject) {
+		self.dismiss(animated: true, completion: nil)
 	}
 	
 	// Mark: Memory Management

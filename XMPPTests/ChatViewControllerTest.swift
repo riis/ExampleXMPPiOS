@@ -39,7 +39,7 @@ class ChatsViewControllerTest: XCTestCase {
         let text = "Testing text"
         let senderId = "daithi@jwchat.org"
         let senderDisplayName = "daithi@jwchat.org"
-        let date = NSDate()
+        let date = Date()
         
         let originalCount = self.chatViewController.messages.count
         

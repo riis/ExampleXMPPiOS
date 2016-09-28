@@ -23,9 +23,9 @@ class LoginViewController: UIViewController {
     // Mark: Private Methods
     
     func DismissKeyboard() {
-        if usernameTextField.isFirstResponder() {
+        if usernameTextField.isFirstResponder {
             usernameTextField.resignFirstResponder()
-        } else if passwordTextField.isFirstResponder() {
+        } else if passwordTextField.isFirstResponder {
             passwordTextField.resignFirstResponder()
         }
     }
@@ -38,48 +38,48 @@ class LoginViewController: UIViewController {
     
     //Mark:Action methods
 
-    @IBAction func login(sender: AnyObject)
+    @IBAction func login(_ sender: AnyObject)
     {
         
         if OneChat.sharedInstance.isConnected()
         {
             OneChat.sharedInstance.disconnect()
-            usernameTextField.hidden = false
-            passwordTextField.hidden = false
-            validateButton.setTitle(kLoginBtnTitle, forState: UIControlState.Normal)
+            usernameTextField.isHidden = false
+            passwordTextField.isHidden = false
+            validateButton.setTitle(kLoginBtnTitle, for: UIControlState())
         }
         else
         {
             if self.usernameTextField.text!.isEmpty {
                 self.usernameIsInvalid.text = kNoString
-                self.usernameIsInvalid.hidden = false
+                self.usernameIsInvalid.isHidden = false
                 return
             }else{
-                self.usernameIsInvalid.hidden = true
+                self.usernameIsInvalid.isHidden = true
             }
             
             if !isValidEmail(self.usernameTextField.text!){
                 self.usernameIsInvalid.text = kEmailIsInvalid
-                self.usernameIsInvalid.hidden = false
+                self.usernameIsInvalid.isHidden = false
                 return
             }else{
-                self.usernameIsInvalid.hidden = true
+                self.usernameIsInvalid.isHidden = true
             }
             
             if self.passwordTextField.text!.characters.count < 7{
                 self.passwordIsInvalid.text = kPasswordLengthError
-                self.passwordIsInvalid.hidden = false
+                self.passwordIsInvalid.isHidden = false
                 return
             }else{
-                self.passwordIsInvalid.hidden = true
+                self.passwordIsInvalid.isHidden = true
             }
             
             if !isValidPassword(self.passwordTextField.text!) {
                 self.passwordIsInvalid.text = kPasswordError
-                self.passwordIsInvalid.hidden = false
+                self.passwordIsInvalid.isHidden = false
                 return
             }else{
-                self.passwordIsInvalid.hidden = true
+                self.passwordIsInvalid.isHidden = true
             }
             
             self.activityIndicatorView.startAnimating()
@@ -88,13 +88,13 @@ class LoginViewController: UIViewController {
                 self.activityIndicatorView.stopAnimating()
 
                 if let _ = error {
-                    let alertController = UIAlertController(title: kSorryString, message: kErrorString + " \(error)", preferredStyle: UIAlertControllerStyle.Alert)
-                    alertController.addAction(UIAlertAction(title: kOKString, style: UIAlertActionStyle.Default, handler:
+                    let alertController = UIAlertController(title: kSorryString, message: kErrorString + " \(error)", preferredStyle: UIAlertControllerStyle.alert)
+                    alertController.addAction(UIAlertAction(title: kOKString, style: UIAlertActionStyle.default, handler:
                         { (UIAlertAction) -> Void in
                         //do something
                     }))
 
-                    self.presentViewController(alertController, animated: true, completion: nil)
+                    self.present(alertController, animated: true, completion: nil)
                 } else
                 {
                     self.activityIndicatorView.stopAnimating()
@@ -102,11 +102,11 @@ class LoginViewController: UIViewController {
                     self.usernameTextField.text = ""
                     self.passwordTextField.text = ""
                     
-                    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.isUserLoggedIn = true
                     self.passwordTextField.resignFirstResponder()
                     
-                    self.performSegueWithIdentifier(kOpenChatSegue, sender: nil)
+                    self.performSegue(withIdentifier: kOpenChatSegue, sender: nil)
                 }
             }
         }
@@ -115,9 +115,9 @@ class LoginViewController: UIViewController {
     
     // Mark: UITextField Delegates
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
     {
-        if passwordTextField.isFirstResponder()
+        if passwordTextField.isFirstResponder
         {
             textField.resignFirstResponder()
             login(self)
@@ -129,19 +129,19 @@ class LoginViewController: UIViewController {
     }
     
     //Validate Email
-    func isValidEmail(testStr:String) -> Bool {
+    func isValidEmail(_ testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(testStr)
+        return emailTest.evaluate(with: testStr)
     }
     
     //Validate Password
-    func isValidPassword(testStr:String) -> Bool {
+    func isValidPassword(_ testStr:String) -> Bool {
         let passRegEx = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{7,20})"
         
         let passTest = NSPredicate(format: "SELF MATCHES %@", passRegEx)
-        return passTest.evaluateWithObject(testStr)
+        return passTest.evaluate(with: testStr)
     }
 
 }

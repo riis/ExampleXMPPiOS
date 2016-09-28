@@ -9,12 +9,12 @@ class SettingsViewController: UIViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let defaults = NSUserDefaults.standardUserDefaults()
-        let timeout = defaults.doubleForKey(kSessionTimeString)
+        let defaults = UserDefaults.standard
+        let timeout = defaults.double(forKey: kSessionTimeString)
         
         if timeout>0
         {
-            self.sessionTimeOut.text = String(defaults.doubleForKey(kSessionTimeString))
+            self.sessionTimeOut.text = String(defaults.double(forKey: kSessionTimeString))
         }
         
     }
@@ -35,12 +35,12 @@ class SettingsViewController: UIViewController
         // Pass the selected object to the new view controller.
     }
     */
-    func textFieldDidEndEditing(textField: UITextField)
+    func textFieldDidEndEditing(_ textField: UITextField)
     {
         //print("TextField did end editing method called")
         
-        let defaults = NSUserDefaults.standardUserDefaults()
-        defaults.setDouble(Double(self.sessionTimeOut.text!)!,  forKey: kSessionTimeString);
+        let defaults = UserDefaults.standard
+        defaults.set(Double(self.sessionTimeOut.text!)!,  forKey: kSessionTimeString);
     }
 
 }

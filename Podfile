@@ -4,6 +4,7 @@ use_frameworks!
 
 target ‘XMPP’ do
 pod 'xmpp-messenger-ios'
+pod 'XMPPFramework', :git => "https://github.com/robbiehanson/XMPPFramework.git", :branch => 'master'
 pod 'TrustKit'
 end
 
