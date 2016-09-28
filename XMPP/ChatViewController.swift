@@ -39,9 +39,9 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
 				self.finishReceivingMessage(animated: true)
 			})
 		} else {
-			if userDetails == nil {
+//			if userDetails == nil {
                         	navigationItem.title = kNewMessageString
-            		}
+//            		}
 			
 			self.inputToolbar!.contentView!.rightBarButtonItem!.isEnabled = false
 			self.navigationItem.setRightBarButton(UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ChatViewController.addRecipient)), animated: true)
@@ -74,9 +74,9 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
 	
 	func didSelectContact(_ recipient: XMPPUserCoreDataStorageObject) {
 		self.recipient = recipient
-		if userDetails == nil {
+//		if userDetails == nil {
             		navigationItem.title = recipient.displayName
-        	}
+//        	}
 		
 		if !OneChats.knownUserForJid(jidStr: recipient.jidStr) {
 			OneChats.addUserToChatList(jidStr: recipient.jidStr)

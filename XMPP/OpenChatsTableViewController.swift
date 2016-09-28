@@ -33,7 +33,11 @@ class OpenChatsTableViewController: UITableViewController, OneRosterDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.isUserLoggedIn = false
         OneChat.sharedInstance.disconnect()
-        self.navigationController?.popViewController(animated: true)
+        
+        //swift 3 need to do like this
+        let _ = navigationController?.popViewController(animated: true)
+
+//        self.navigationController?.popViewController(animated: true)
     }
     
     //Mark:Action methods
