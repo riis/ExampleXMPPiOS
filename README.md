@@ -17,18 +17,6 @@ $ sudo gem install cocoapods
 
 Once the all of the dependencies are installed and updated, you can now open the project in XCode.  After launching XCode, open the project using the **.xcworkspace** file.
 
-## Fix Before Build
-
-There is an error in one of the methods inside one of the Pod libraries that needs to fixed before the project will compile correctly.  Inside of the **xmpp-messanger-ios** directory, locate the **OneChat.swift** file and change the following lines of code in the **setupStream()** method:
-
-```sh
-xmppvCardTempModule = XMPPvCardTempModule(withvCardStorage: xmppvCardStorage)
-xmppvCardAvatarModule = XMPPvCardAvatarModule(withvCardTempModule: xmppvCardTempModule)
-```
-to:
-```sh
-xmppvCardTempModule = XMPPvCardTempModule(vCardStorage: xmppvCardStorage)
-xmppvCardAvatarModule = XMPPvCardAvatarModule(vCardTempModule: xmppvCardTempModule)
-```
+## Do a Clean Build
 
 Now you can compile the project and launch the app on the device of your choosing.
