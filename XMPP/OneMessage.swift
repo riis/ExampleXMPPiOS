@@ -50,20 +50,13 @@ open class OneMessage: NSObject {
     // MARK: public methods
     open class func sendMessage(_ message: String, to receiver: String, completionHandler completion:@escaping OneChatMessageCompletionHandler) {
         
-//        open class func element(withName:"body", stringValue: message)
         let body = DDXMLElement.element(withName: "body", stringValue: message) as! DDXMLElement
 
 //        let body = DDXMLElement.element(withName: "body") as! DDXMLElement
         
         let messageID = OneChat.sharedInstance.xmppStream?.generateUUID()
-        print("body is \(body)")
         //body.setStringValue(message)
         body.attributeStringValue(forName: message)
-        print("body is \(body)")
-
-       // body.addAttribute(withName: "body", stringValue: message)
-
-
         
         let completeMessage = DDXMLElement.element(withName: "message") as! DDXMLElement
         
