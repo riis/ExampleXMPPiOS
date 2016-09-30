@@ -9,15 +9,15 @@
 import Foundation
 import XMPPFramework
 
-public class OneChats: NSObject, NSFetchedResultsControllerDelegate {
+public class ChatsHistory: NSObject, NSFetchedResultsControllerDelegate {
     
     var chatList = NSMutableArray()
     var chatListBare = NSMutableArray()
     
     // MARK: Class function
-    class var sharedInstance : OneChats {
+    class var sharedInstance : ChatsHistory {
         struct OneChatsSingleton {
-            static let instance = OneChats()
+            static let instance = ChatsHistory()
         }
         return OneChatsSingleton.instance
     }
@@ -26,10 +26,10 @@ public class OneChats: NSObject, NSFetchedResultsControllerDelegate {
         if 0 == sharedInstance.chatList.count {
             if let chatList: NSMutableArray = sharedInstance.getActiveUsersFromCoreDataStorage() as? NSMutableArray {//NSUserDefaults.standardUserDefaults().objectForKey("openChatList")
                 chatList.enumerateObjects({ (jidStr, index, finished) -> Void in
-                    OneChats.sharedInstance.getUserFromXMPPCoreDataObject(jidStr: jidStr as! String)
+                    ChatsHistory.sharedInstance.getUserFromXMPPCoreDataObject(jidStr: jidStr as! String)
                     
-                    if let user = OneRoster.userFromRosterForJID(jid: jidStr as! String) {
-                        OneChats.sharedInstance.chatList.add(user)
+                    if let user = ChatRoster.userFromRosterForJID(jid: jidStr as! String) {
+                        ChatsHistory.sharedInstance.chatList.add(user)
                     }
                 })
             }
@@ -38,7 +38,7 @@ public class OneChats: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     private func getActiveUsersFromCoreDataStorage() -> NSArray? {
-        let moc = OneMessage.sharedInstance.xmppMessageStorage?.mainThreadManagedObjectContext
+        let moc = SendReceiveChatMessage.sharedInstance.xmppMessageStorage?.mainThreadManagedObjectContext
         let entityDescription = NSEntityDescription.entity(forEntityName: "XMPPMessageArchiving_Message_CoreDataObject", in: moc!)
         
         let request:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "XMPPMessageArchiving_Message_CoreDataObject")
@@ -80,7 +80,7 @@ public class OneChats: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     private func getUserFromXMPPCoreDataObject(jidStr: String) {
-        let moc = OneRoster.sharedInstance.managedObjectContext_roster() as NSManagedObjectContext?
+        let moc = ChatRoster.sharedInstance.managedObjectContext_roster() as NSManagedObjectContext?
         let entity = NSEntityDescription.entity(forEntityName: "XMPPUserCoreDataStorageObject", in: moc!)
         
         let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "XMPPUserCoreDataStorageObject")
@@ -91,7 +91,7 @@ public class OneChats: NSObject, NSFetchedResultsControllerDelegate {
         
         var predicate: NSPredicate
         
-        if OneChat.sharedInstance.xmppStream == nil {
+        if ChatConnector.sharedInstance.xmppStream == nil {
             predicate = NSPredicate(format: "jidStr == %@", jidStr)
         } else {
             predicate = NSPredicate(format: "jidStr == %@ AND streamBareJidStr == %@", jidStr, UserDefaults.standard.string(forKey: "kXMPPmyJID")!)
@@ -125,7 +125,7 @@ public class OneChats: NSObject, NSFetchedResultsControllerDelegate {
     
     
     public class func knownUserForJid(jidStr: String) -> Bool {
-        if sharedInstance.chatList.contains(OneRoster.userFromRosterForJID(jid: jidStr)!) {
+        if sharedInstance.chatList.contains(ChatRoster.userFromRosterForJID(jid: jidStr)!) {
             return true
         } else {
             return false
@@ -134,13 +134,13 @@ public class OneChats: NSObject, NSFetchedResultsControllerDelegate {
     
     public class func addUserToChatList(jidStr: String) {
         if !knownUserForJid(jidStr: jidStr) {
-            sharedInstance.chatList.add(OneRoster.userFromRosterForJID(jid: jidStr)!)
+            sharedInstance.chatList.add(ChatRoster.userFromRosterForJID(jid: jidStr)!)
             sharedInstance.chatListBare.add(jidStr)
         }
     }
     
     public class func removeUserAtIndexPath(indexPath: NSIndexPath) {
-        let user = OneChats.getChatsList().object(at:indexPath.row) as! XMPPUserCoreDataStorageObject
+        let user = ChatsHistory.getChatsList().object(at:indexPath.row) as! XMPPUserCoreDataStorageObject
         
         sharedInstance.removeMyUserActivityFromCoreDataStorageWith(user: user)
         sharedInstance.removeUserActivityFromCoreDataStorage(user: user)
@@ -155,7 +155,7 @@ public class OneChats: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     func removeUserActivityFromCoreDataStorage(user: XMPPUserCoreDataStorageObject) {
-        let moc = OneMessage.sharedInstance.xmppMessageStorage?.mainThreadManagedObjectContext
+        let moc = SendReceiveChatMessage.sharedInstance.xmppMessageStorage?.mainThreadManagedObjectContext
         let entityDescription = NSEntityDescription.entity(forEntityName: "XMPPMessageArchiving_Message_CoreDataObject", in: moc!)
         
         let request:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "XMPPMessageArchiving_Message_CoreDataObject")
@@ -178,7 +178,7 @@ public class OneChats: NSObject, NSFetchedResultsControllerDelegate {
     }
     
     func removeMyUserActivityFromCoreDataStorageWith(user: XMPPUserCoreDataStorageObject) {
-        let moc = OneMessage.sharedInstance.xmppMessageStorage?.mainThreadManagedObjectContext
+        let moc = SendReceiveChatMessage.sharedInstance.xmppMessageStorage?.mainThreadManagedObjectContext
         let entityDescription = NSEntityDescription.entity(forEntityName: "XMPPMessageArchiving_Message_CoreDataObject", in: moc!)
         
         let request:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "XMPPMessageArchiving_Message_CoreDataObject")

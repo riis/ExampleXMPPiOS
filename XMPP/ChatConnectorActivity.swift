@@ -12,15 +12,15 @@ import XMPPFramework
 
 public typealias OneMakeLastCallCompletionHandler = (_ response: XMPPIQ?, _ forJID:XMPPJID?, _ error: DDXMLElement?) -> Void
 
-open class OneLastActivity: NSObject {
+open class ChatConnectorActivity: NSObject {
     
     var didMakeLastCallCompletionBlock: OneMakeLastCallCompletionHandler?
     
     // MARK: Singleton
     
-    open class var sharedInstance : OneLastActivity {
+    open class var sharedInstance : ChatConnectorActivity {
         struct OneLastActivitySingleton {
-            static let instance = OneLastActivity()
+            static let instance = ChatConnectorActivity()
         }
         return OneLastActivitySingleton.instance
     }
@@ -97,16 +97,16 @@ open class OneLastActivity: NSObject {
     }
 }
 
-extension OneLastActivity: XMPPLastActivityDelegate {
+extension ChatConnectorActivity: XMPPLastActivityDelegate {
     
     public func xmppLastActivity(_ sender: XMPPLastActivity!, didNotReceiveResponse queryID: String!, dueToTimeout timeout: TimeInterval) {
-        if let callback = OneLastActivity.sharedInstance.didMakeLastCallCompletionBlock {
+        if let callback = ChatConnectorActivity.sharedInstance.didMakeLastCallCompletionBlock {
             callback(nil, nil ,DDXMLElement(name: "TimeOut"))
         }
     }
     
     public func xmppLastActivity(_ sender: XMPPLastActivity!, didReceiveResponse response: XMPPIQ!) {
-        if let callback = OneLastActivity.sharedInstance.didMakeLastCallCompletionBlock {
+        if let callback = ChatConnectorActivity.sharedInstance.didMakeLastCallCompletionBlock {
             if let resp = response {
                 if resp.forName("error") != nil {
                     if let from = resp.value(forKey: "from") {

@@ -19,7 +19,7 @@ public protocol OneMessageDelegate {
     func oneStream(_ sender: XMPPStream, userIsComposing user: XMPPUserCoreDataStorageObject)
 }
 
-open class OneMessage: NSObject {
+open class SendReceiveChatMessage: NSObject {
     open var delegate: OneMessageDelegate?
     
     open var xmppMessageStorage: XMPPMessageArchivingCoreDataStorage?
@@ -28,9 +28,9 @@ open class OneMessage: NSObject {
     
     // MARK: Singleton
     
-    open class var sharedInstance : OneMessage {
+    open class var sharedInstance : SendReceiveChatMessage {
         struct OneMessageSingleton {
-            static let instance = OneMessage()
+            static let instance = SendReceiveChatMessage()
         }
         
         return OneMessageSingleton.instance
@@ -43,7 +43,7 @@ open class OneMessage: NSObject {
         xmppMessageArchiving = XMPPMessageArchiving(messageArchivingStorage: xmppMessageStorage)
         
         xmppMessageArchiving?.clientSideMessageArchivingOnly = true
-        xmppMessageArchiving?.activate(OneChat.sharedInstance.xmppStream)
+        xmppMessageArchiving?.activate(ChatConnector.sharedInstance.xmppStream)
         xmppMessageArchiving?.addDelegate(self, delegateQueue: DispatchQueue.main)
     }
     
@@ -54,7 +54,7 @@ open class OneMessage: NSObject {
 
 //        let body = DDXMLElement.element(withName: "body") as! DDXMLElement
         
-        let messageID = OneChat.sharedInstance.xmppStream?.generateUUID()
+        let messageID = ChatConnector.sharedInstance.xmppStream?.generateUUID()
         //body.setStringValue(message)
         body.attributeStringValue(forName: message)
         
@@ -68,7 +68,7 @@ open class OneMessage: NSObject {
         print("completeMessage is \(completeMessage)")
 
         sharedInstance.didSendMessageCompletionBlock = completion
-        OneChat.sharedInstance.xmppStream?.send(completeMessage)
+        ChatConnector.sharedInstance.xmppStream?.send(completeMessage)
     }
     
     open class func sendIsComposingMessage(_ recipient: String, completionHandler completion:@escaping OneChatMessageCompletionHandler) {
@@ -81,7 +81,7 @@ open class OneMessage: NSObject {
             message.addChild(composing)
             
             sharedInstance.didSendMessageCompletionBlock = completion
-            OneChat.sharedInstance.xmppStream?.send(message)
+            ChatConnector.sharedInstance.xmppStream?.send(message)
         }
     }
     
@@ -96,7 +96,7 @@ open class OneMessage: NSObject {
             message.addChild(active)
             
             sharedInstance.didSendMessageCompletionBlock = completion
-            OneChat.sharedInstance.xmppStream?.send(message)
+            ChatConnector.sharedInstance.xmppStream?.send(message)
         }
     }
     
@@ -138,7 +138,7 @@ open class OneMessage: NSObject {
                 }
                 
                 if element.attributeStringValue(forName: "to") == jid {
-                    let displayName = OneChat.sharedInstance.xmppStream?.myJID
+                    let displayName = ChatConnector.sharedInstance.xmppStream?.myJID
                     sender = displayName!.bare()
                 } else {
                     sender = jid
@@ -186,28 +186,28 @@ open class OneMessage: NSObject {
     }*/
 }
 
-extension OneMessage: XMPPStreamDelegate {
+extension SendReceiveChatMessage: XMPPStreamDelegate {
     
     public func xmppStream(_ sender: XMPPStream, didSend message: XMPPMessage) {
-        if let completion = OneMessage.sharedInstance.didSendMessageCompletionBlock {
+        if let completion = SendReceiveChatMessage.sharedInstance.didSendMessageCompletionBlock {
             completion(sender, message)
         }
         //OneMessage.sharedInstance.didSendMessageCompletionBlock!(stream: sender, message: message)
     }
     
     public func xmppStream(_ sender: XMPPStream, didReceive message: XMPPMessage) {
-        let user = OneChat.sharedInstance.xmppRosterStorage.user(for: message.from(), xmppStream: OneChat.sharedInstance.xmppStream, managedObjectContext: OneRoster.sharedInstance.managedObjectContext_roster())
+        let user = ChatConnector.sharedInstance.xmppRosterStorage.user(for: message.from(), xmppStream: ChatConnector.sharedInstance.xmppStream, managedObjectContext: ChatRoster.sharedInstance.managedObjectContext_roster())
         
-        if !OneChats.knownUserForJid(jidStr: (user?.jidStr)!) {
-            OneChats.addUserToChatList(jidStr: (user?.jidStr)!)
+        if !ChatsHistory.knownUserForJid(jidStr: (user?.jidStr)!) {
+            ChatsHistory.addUserToChatList(jidStr: (user?.jidStr)!)
         }
         
         if message.isChatMessageWithBody() {
-            OneMessage.sharedInstance.delegate?.oneStream(sender, didReceiveMessage: message, from: user!)
+            SendReceiveChatMessage.sharedInstance.delegate?.oneStream(sender, didReceiveMessage: message, from: user!)
         } else {
             //was composing
             if let _ = message.forName("composing") {
-                OneMessage.sharedInstance.delegate?.oneStream(sender, userIsComposing: user!)
+                SendReceiveChatMessage.sharedInstance.delegate?.oneStream(sender, userIsComposing: user!)
             }
         }
     }

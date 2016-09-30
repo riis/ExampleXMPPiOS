@@ -39,9 +39,9 @@ class LoginViewController: UIViewController {
     @IBAction func login(_ sender: AnyObject)
     {
         
-        if OneChat.sharedInstance.isConnected()
+        if ChatConnector.sharedInstance.isConnected()
         {
-            OneChat.sharedInstance.disconnect()
+            ChatConnector.sharedInstance.disconnect()
             usernameTextField.isHidden = false
             passwordTextField.isHidden = false
             validateButton.setTitle(kLoginBtnTitle, for: UIControlState())
@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
             }
             
             self.activityIndicatorView.startAnimating()
-            OneChat.sharedInstance.connect(username: self.usernameTextField.text!, password: self.passwordTextField.text!)
+            ChatConnector.sharedInstance.connect(username: self.usernameTextField.text!, password: self.passwordTextField.text!)
             { (stream, error) -> Void in
                 self.activityIndicatorView.stopAnimating()
 

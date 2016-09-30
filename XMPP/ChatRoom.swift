@@ -15,15 +15,15 @@ protocol OneRoomDelegate {
     //func onePresenceDidReceivePresence()
 }
 
-class OneRoom: NSObject {
+class ChatRoom: NSObject {
     var delegate: OneRoomDelegate?
     
     var didCreateRoomCompletionBlock: OneRoomCreationCompletionHandler?
     
     // MARK: Singleton
-    class var sharedInstance : OneRoom {
+    class var sharedInstance : ChatRoom {
         struct OneRoomSingleton {
-            static let instance = OneRoom()
+            static let instance = ChatRoom()
         }
         return OneRoomSingleton.instance
     }
@@ -33,19 +33,19 @@ class OneRoom: NSObject {
         sharedInstance.didCreateRoomCompletionBlock = completion
         
         let roomMemoryStorage = XMPPRoomMemoryStorage()
-        let domain = OneChat.sharedInstance.xmppStream!.myJID.domain
+        let domain = ChatConnector.sharedInstance.xmppStream!.myJID.domain
         let roomJID = XMPPJID(string:"\(roomName)@conference.\(domain)")
         let xmppRoom = XMPPRoom(roomStorage: roomMemoryStorage, jid: roomJID, dispatchQueue: DispatchQueue.main)
         
-        xmppRoom?.activate(OneChat.sharedInstance.xmppStream)
+        xmppRoom?.activate(ChatConnector.sharedInstance.xmppStream)
         xmppRoom?.addDelegate(delegate, delegateQueue: DispatchQueue.main)
         //print(OneChat.sharedInstance.xmppStream!.myJID.bare())
-        xmppRoom?.join(usingNickname: OneChat.sharedInstance.xmppStream!.myJID.bare(), history: nil, password: nil)
+        xmppRoom?.join(usingNickname: ChatConnector.sharedInstance.xmppStream!.myJID.bare(), history: nil, password: nil)
         xmppRoom?.fetchConfigurationForm()
     }
 }
 
-extension OneRoom: XMPPRoomDelegate {
+extension ChatRoom: XMPPRoomDelegate {
     /**
      * Invoked with the results of a request to fetch the configuration form.
      * The given config form will look something like:

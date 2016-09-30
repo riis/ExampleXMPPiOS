@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        OneChat.start(true, delegate: nil) { (stream, error) -> Void in
+        ChatConnector.start(true, delegate: nil) { (stream, error) -> Void in
             if let _ = error {
                 //handle start errors here
                 print(kAppDelegateErrors)
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 // Do other keep alive stuff here.
             })
         } else {
-            OneChat.stop()
+            ChatConnector.stop()
         }
     }
     
@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
-        OneChat.stop()
+        ChatConnector.stop()
         
     }
     

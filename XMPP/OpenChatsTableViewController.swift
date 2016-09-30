@@ -16,7 +16,7 @@ class OpenChatsTableViewController: UITableViewController, OneRosterDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(OpenChatsTableViewController.logout), name: NSNotification.Name(rawValue: kNeedToTimeOutString), object: nil)
 
 
-        OneRoster.sharedInstance.delegate = self
+        ChatRoster.sharedInstance.delegate = self
 		
 		tableView.rowHeight = 50
 	}
@@ -25,13 +25,13 @@ class OpenChatsTableViewController: UITableViewController, OneRosterDelegate {
     {
 		super.viewWillDisappear(animated)
 		
-		OneRoster.sharedInstance.delegate = nil
+		ChatRoster.sharedInstance.delegate = nil
 	}
     func logout()
     {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.isUserLoggedIn = false
-        OneChat.sharedInstance.disconnect()
+        ChatConnector.sharedInstance.disconnect()
         
         //swift 3 need to do like this
         let _ = navigationController?.popViewController(animated: true)
@@ -63,7 +63,7 @@ class OpenChatsTableViewController: UITableViewController, OneRosterDelegate {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        let sections: NSArray? =  OneRoster.buddyList.sections as NSArray?
+        let sections: NSArray? =  ChatRoster.buddyList.sections as NSArray?
         
         if section < sections!.count {
             let sectionInfo: AnyObject = sections![section] as AnyObject
@@ -76,14 +76,14 @@ class OpenChatsTableViewController: UITableViewController, OneRosterDelegate {
     
     override func numberOfSections(in tableView: UITableView) -> Int
     {
-        return OneRoster.buddyList.sections!.count
+        return ChatRoster.buddyList.sections!.count
     }
     
     // Mark: UITableView Delegates
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        let sections: NSArray? = OneRoster.sharedInstance.fetchedResultsController()!.sections as NSArray?
+        let sections: NSArray? = ChatRoster.sharedInstance.fetchedResultsController()!.sections as NSArray?
         
         if section < sections!.count {
             let sectionInfo: AnyObject = sections![section] as AnyObject
@@ -106,13 +106,13 @@ class OpenChatsTableViewController: UITableViewController, OneRosterDelegate {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        _ = OneRoster.userFromRosterAtIndexPath(indexPath: indexPath)
+        _ = ChatRoster.userFromRosterAtIndexPath(indexPath: indexPath)
         
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: UITableViewCell? = tableView.dequeueReusableCell(withIdentifier: kCellId, for: indexPath)
-        let user = OneRoster.userFromRosterAtIndexPath(indexPath: indexPath)
+        let user = ChatRoster.userFromRosterAtIndexPath(indexPath: indexPath)
         
         cell!.textLabel!.text = user.displayName;
         cell!.detailTextLabel?.isHidden = true
@@ -123,7 +123,7 @@ class OpenChatsTableViewController: UITableViewController, OneRosterDelegate {
             cell!.backgroundColor = UIColor.white
         }
         
-        OneChat.sharedInstance.configurePhotoForCell(cell!, user: user)
+        ChatConnector.sharedInstance.configurePhotoForCell(cell!, user: user)
         
         return cell!;
     }
@@ -137,7 +137,7 @@ class OpenChatsTableViewController: UITableViewController, OneRosterDelegate {
 			if let controller = segue?.destination as? ChatViewController {
                 
                 if let cell: UITableViewCell = sender as? UITableViewCell {
-                    let user = OneRoster.userFromRosterAtIndexPath(indexPath: tableView.indexPath(for: cell)!)
+                    let user = ChatRoster.userFromRosterAtIndexPath(indexPath: tableView.indexPath(for: cell)!)
                     controller.recipient = user
                 }
 			}

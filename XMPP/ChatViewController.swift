@@ -16,11 +16,11 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
 		super.viewDidLoad()
         self.navigationItem.setHidesBackButton(false, animated:true);
 
-		OneMessage.sharedInstance.delegate = self
+		SendReceiveChatMessage.sharedInstance.delegate = self
   
-		if OneChat.sharedInstance.isConnected() {
-			self.senderId = OneChat.sharedInstance.xmppStream?.myJID.bare()
-			self.senderDisplayName = OneChat.sharedInstance.xmppStream?.myJID.bare()
+		if ChatConnector.sharedInstance.isConnected() {
+			self.senderId = ChatConnector.sharedInstance.xmppStream?.myJID.bare()
+			self.senderDisplayName = ChatConnector.sharedInstance.xmppStream?.myJID.bare()
 		}
 		
 		self.collectionView!.collectionViewLayout.springinessEnabled = false
@@ -34,7 +34,7 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
                 	navigationItem.title = recipient.displayName
 			
 			DispatchQueue.main.async(execute: { () -> Void in
-				self.messages = OneMessage.sharedInstance.loadArchivedMessagesFrom(jid: recipient.jidStr)
+				self.messages = SendReceiveChatMessage.sharedInstance.loadArchivedMessagesFrom(jid: recipient.jidStr)
 				self.finishReceivingMessage(animated: true)
 			})
 		} else {
@@ -77,10 +77,10 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
             		navigationItem.title = recipient.displayName
 //        	}
 		
-		if !OneChats.knownUserForJid(jidStr: recipient.jidStr) {
-			OneChats.addUserToChatList(jidStr: recipient.jidStr)
+		if !ChatsHistory.knownUserForJid(jidStr: recipient.jidStr) {
+			ChatsHistory.addUserToChatList(jidStr: recipient.jidStr)
 		} else {
-			messages = OneMessage.sharedInstance.loadArchivedMessagesFrom(jid: recipient.jidStr)
+			messages = SendReceiveChatMessage.sharedInstance.loadArchivedMessagesFrom(jid: recipient.jidStr)
 			finishReceivingMessage(animated: true)
 		}
 	}
@@ -101,7 +101,7 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
             		timer?.invalidate()
             		if !isComposing {
                 		self.isComposing = true
-                		OneMessage.sendIsComposingMessage((recipient?.jidStr)!, completionHandler: { (stream, message) -> Void in
+                		SendReceiveChatMessage.sendIsComposingMessage((recipient?.jidStr)!, completionHandler: { (stream, message) -> Void in
                     			self.timer = Timer.scheduledTimer(timeInterval: 4.0, target: self, selector: #selector(ChatViewController.hideTypingIndicator), userInfo: nil, repeats: false)
                 		})
             		} else {
@@ -113,7 +113,7 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
     	func hideTypingIndicator() {
         	if let recipient = recipient {
             		self.isComposing = false
-            		OneMessage.sendIsComposingMessage((recipient.jidStr)!, completionHandler: { (stream, message) -> Void in
+            		SendReceiveChatMessage.sendIsComposingMessage((recipient.jidStr)!, completionHandler: { (stream, message) -> Void in
             
             		})
         	}
@@ -125,7 +125,7 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
         messages.add(fullMessage)
 		
 		if let recipient = recipient {
-			OneMessage.sendMessage(text, to: recipient.jidStr, completionHandler: { (stream, message) -> Void in
+			SendReceiveChatMessage.sendMessage(text, to: recipient.jidStr, completionHandler: { (stream, message) -> Void in
 				JSQSystemSoundPlayer.jsq_playMessageSentSound()
 				self.finishSendingMessage(animated: true)
 			})
@@ -160,7 +160,7 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
         let message: JSQMessage = self.messages[indexPath.item] as! JSQMessage
         
         if message.senderId == self.senderId {
-            if let photoData = OneChat.sharedInstance.xmppvCardAvatarModule?.photoData(for: OneChat.sharedInstance.xmppStream?.myJID) {
+            if let photoData = ChatConnector.sharedInstance.xmppvCardAvatarModule?.photoData(for: ChatConnector.sharedInstance.xmppStream?.myJID) {
                 let senderAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(data: photoData), diameter: 30)
                 return senderAvatar
             } else {
@@ -168,7 +168,7 @@ class ChatViewController: JSQMessagesViewController, OneMessageDelegate,ContactP
                 return senderAvatar
             }
         } else {
-            if let photoData = OneChat.sharedInstance.xmppvCardAvatarModule?.photoData(for: recipient!.jid!) {
+            if let photoData = ChatConnector.sharedInstance.xmppvCardAvatarModule?.photoData(for: recipient!.jid!) {
                 let recipientAvatar = JSQMessagesAvatarImageFactory.avatarImage(with: UIImage(data: photoData), diameter: 30)
                 return recipientAvatar
             } else {

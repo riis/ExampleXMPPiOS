@@ -22,7 +22,7 @@ public protocol OneChatDelegate {
     func oneStreamDidDisconnect(_ sender: XMPPStream, withError error: NSError)
 }
 
-open class OneChat: NSObject {
+open class ChatConnector: NSObject {
     
     var delegate: OneChatDelegate?
     var window: UIWindow?
@@ -39,11 +39,11 @@ open class OneChat: NSObject {
     var xmppMessageDeliveryRecipts: XMPPMessageDeliveryReceipts?
     var xmppCapabilities: XMPPCapabilities?
     var user : XMPPUserCoreDataStorageObject?
-    var chats: OneChats?
-    let presenceTest = OnePresence()
-    let messageTest = OneMessage()
-    let rosterTest = OneRoster()
-    let lastActivityTest = OneLastActivity()
+    var chats: ChatsHistory?
+    let presenceTest = ChatPresence()
+    let messageTest = SendReceiveChatMessage()
+    let rosterTest = ChatRoster()
+    let lastActivityTest = ChatConnectorActivity()
     
     var customCertEvaluation: Bool?
     var isXmppConnected: Bool?
@@ -54,9 +54,9 @@ open class OneChat: NSObject {
     
     // MARK: Singleton
     
-    open class var sharedInstance : OneChat {
+    open class var sharedInstance : ChatConnector {
         struct OneChatSingleton {
-            static let instance = OneChat()
+            static let instance = ChatConnector()
         }
         return OneChatSingleton.instance
     }
@@ -71,12 +71,12 @@ open class OneChat: NSObject {
         sharedInstance.setupStream()
         
         if archiving! {
-            OneMessage.sharedInstance.setupArchiving()
+            SendReceiveChatMessage.sharedInstance.setupArchiving()
         }
         if let delegate: OneChatDelegate = delegate {
             sharedInstance.delegate = delegate
         }
-        OneRoster.sharedInstance.fetchedResultsController()?.delegate = OneRoster.sharedInstance
+        ChatRoster.sharedInstance.fetchedResultsController()?.delegate = ChatRoster.sharedInstance
         sharedInstance.streamDidAuthenticateCompletionBlock = completion
     }
     
@@ -226,10 +226,10 @@ open class OneChat: NSObject {
         xmppvCardTempModule!.deactivate()
         xmppvCardAvatarModule!.deactivate()
         xmppCapabilities!.deactivate()
-        OneMessage.sharedInstance.xmppMessageArchiving!.deactivate()
+        SendReceiveChatMessage.sharedInstance.xmppMessageArchiving!.deactivate()
         xmppStream!.disconnect()
         
-        OneMessage.sharedInstance.xmppMessageStorage = nil;
+        SendReceiveChatMessage.sharedInstance.xmppMessageStorage = nil;
         xmppStream = nil;
         xmppReconnect = nil;
         xmppRoster = nil;
@@ -285,7 +285,7 @@ open class OneChat: NSObject {
     }
     
     open func disconnect() {
-        OnePresence.goOffline()
+        ChatPresence.goOffline()
         xmppStream?.disconnect()
     }
     
@@ -320,7 +320,7 @@ open class OneChat: NSObject {
 
 // MARK: XMPPStream Delegate
 
-extension OneChat: XMPPStreamDelegate {
+extension ChatConnector: XMPPStreamDelegate {
     
     public func xmppStream(_ sender: XMPPStream?, socketDidConnect socket: GCDAsyncSocket?) {
         delegate?.oneStream(sender, socketDidConnect: socket)
@@ -407,7 +407,7 @@ extension OneChat: XMPPStreamDelegate {
     public func xmppStreamDidAuthenticate(_ sender: XMPPStream) {
         streamDidAuthenticateCompletionBlock!(sender, nil)
         streamDidConnectCompletionBlock!(sender, nil)
-        OnePresence.goOnline()
+        ChatPresence.goOnline()
     }
     
     public func xmppStream(_ sender: XMPPStream, didNotAuthenticate error: DDXMLElement) {

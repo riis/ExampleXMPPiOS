@@ -13,15 +13,15 @@ public protocol OneRosterDelegate {
     func oneRosterContentChanged(_ controller: NSFetchedResultsController<NSFetchRequestResult>)
 }
 
-open class OneRoster: NSObject, NSFetchedResultsControllerDelegate {
+open class ChatRoster: NSObject, NSFetchedResultsControllerDelegate {
     open var delegate: OneRosterDelegate?
     open var fetchedResultsControllerVar: NSFetchedResultsController<NSFetchRequestResult>?
     
     // MARK: Singleton
     
-    open class var sharedInstance : OneRoster {
+    open class var sharedInstance : ChatRoster {
         struct OneRosterSingleton {
-            static let instance = OneRoster()
+            static let instance = ChatRoster()
         }
         return OneRosterSingleton.instance
     }
@@ -38,16 +38,16 @@ open class OneRoster: NSObject, NSFetchedResultsControllerDelegate {
     // MARK: Core Data
     
     func managedObjectContext_roster() -> NSManagedObjectContext {
-        return OneChat.sharedInstance.xmppRosterStorage.mainThreadManagedObjectContext
+        return ChatConnector.sharedInstance.xmppRosterStorage.mainThreadManagedObjectContext
     }
     
     fileprivate func managedObjectContext_capabilities() -> NSManagedObjectContext {
-        return OneChat.sharedInstance.xmppRosterStorage.mainThreadManagedObjectContext
+        return ChatConnector.sharedInstance.xmppRosterStorage.mainThreadManagedObjectContext
     }
     
     open func fetchedResultsController() -> NSFetchedResultsController<NSFetchRequestResult>? {
         if fetchedResultsControllerVar == nil {
-            let moc = OneRoster.sharedInstance.managedObjectContext_roster() as NSManagedObjectContext?
+            let moc = ChatRoster.sharedInstance.managedObjectContext_roster() as NSManagedObjectContext?
             let entity = NSEntityDescription.entity(forEntityName: "XMPPUserCoreDataStorageObject", in: moc!)
             let sd1 = NSSortDescriptor(key: "sectionNum", ascending: true)
             let sd2 = NSSortDescriptor(key: "displayName", ascending: true)
@@ -86,7 +86,7 @@ open class OneRoster: NSObject, NSFetchedResultsControllerDelegate {
     open class func userFromRosterForJID(jid: String) -> XMPPUserCoreDataStorageObject? {
         let userJID = XMPPJID(string:jid)
         
-        if let user = OneChat.sharedInstance.xmppRosterStorage.user(for: userJID, xmppStream: OneChat.sharedInstance.xmppStream, managedObjectContext: sharedInstance.managedObjectContext_roster()) {
+        if let user = ChatConnector.sharedInstance.xmppRosterStorage.user(for: userJID, xmppStream: ChatConnector.sharedInstance.xmppStream, managedObjectContext: sharedInstance.managedObjectContext_roster()) {
             return user
         } else {
             return nil
@@ -103,21 +103,21 @@ open class OneRoster: NSObject, NSFetchedResultsControllerDelegate {
     }
 }
 
-extension OneRoster: XMPPRosterDelegate {
+extension ChatRoster: XMPPRosterDelegate {
     
     public func xmppRoster(_ sender: XMPPRoster, didReceiveBuddyRequest presence:XMPPPresence) {
         //was let user
-        _ = OneChat.sharedInstance.xmppRosterStorage.user(for: presence.from(), xmppStream: OneChat.sharedInstance.xmppStream, managedObjectContext: managedObjectContext_roster())
+        _ = ChatConnector.sharedInstance.xmppRosterStorage.user(for: presence.from(), xmppStream: ChatConnector.sharedInstance.xmppStream, managedObjectContext: managedObjectContext_roster())
     }
     
     public func xmppRosterDidEndPopulating(_ sender: XMPPRoster?) {
-        let jidList = OneChat.sharedInstance.xmppRosterStorage.jids(for: OneChat.sharedInstance.xmppStream)
+        let jidList = ChatConnector.sharedInstance.xmppRosterStorage.jids(for: ChatConnector.sharedInstance.xmppStream)
         print("List=\(jidList)")
         
     }
 }
 
-extension OneRoster: XMPPStreamDelegate {
+extension ChatRoster: XMPPStreamDelegate {
     
     public func xmppStream(_ sender: XMPPStream, didReceive ip: XMPPIQ) -> Bool {
         if let msg = ip.attribute(forName: "from") {
